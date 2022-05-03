@@ -6,6 +6,7 @@ const xss = require("xss-clean");
 const hpp = require("hpp");
 // const AppError = require("./utils/appError");
 // const globalErrorHandler = require("./controllers/errorController");
+const roomsRoute=require("./routes/roomsRoute");
 
 const app = express();
 
@@ -27,17 +28,21 @@ app.use(xss());
 // eg: [in the url if we use 2 sortBy sortBy, it will make it work]
 app.use(hpp());
 
+
 // This snippet limits the server to make many requests
 const limiter = rateLimit({
   max: 10000,
   windowMs: 60 * 60 * 1000,
   message: "Too many requests from this IP, please try again in an hour.",
 });
-app.use("/", (req,res)=>res.send("up"));
+// app.use("/", (req,res)=>res.send("up"));
 
 // app.use("/api/v1/users", userRouter);
 
 // app.use("/api/v1/testRoute", testRouter);
+
+app.use("/api/rooms",roomsRoute);
+
 
 app.all("*", (req, res, next) => {
   res.status(404).json({

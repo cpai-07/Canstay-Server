@@ -1,9 +1,11 @@
 const mongoose = require("mongoose");
 
-DATABASE_URI = process.env.DATABASE_URI;
+var url ="mongodb+srv://chinmay:chinmay@cluster0.vkhwn.mongodb.net/Canstay"
+
+// process.env.DATABASE_URI;
 
 mongoose
-  .connect(DATABASE_URI, {
+  .connect(url, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
