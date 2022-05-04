@@ -8,7 +8,7 @@ const hpp = require("hpp");
 // const globalErrorHandler = require("./controllers/errorController");
 const roomsRoute=require("./routes/roomsRoute");
 const usersRoute=require("./routes/userRoute");
-
+const complaintRoute=require("./routes/complaintRoute");
 const app = express();
 
 // const userRouter = require("./routes/userRouter");
@@ -44,6 +44,7 @@ const limiter = rateLimit({
 
 app.use("/api/rooms",roomsRoute);
 app.use("/api/users",usersRoute);
+app.use("/api/comp",complaintRoute);
 
 
 app.all("*", (req, res, next) => {
