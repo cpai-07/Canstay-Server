@@ -32,5 +32,10 @@ const studentSchema=mongoose.Schema({
     phone:{
         type:Number,
         required:true
-    }
+    },
+    gender: {
+        type: String,
+        enum: ['MALE', 'FEMALE'],
+        required: true,
+      }
 })

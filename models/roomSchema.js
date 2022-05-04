@@ -1,38 +1,43 @@
-const mongoose=require("mongoose");
+const mongoose = require("mongoose");
 
 const roomSchema = mongoose.Schema({
-    roomNo:{
-        type:Number,
-        required:[true, "Room number is req"]
+    roomNo: {
+        type: Number,
+        required: [true, "Room number is req"]
     },
-    floor:{
-        type:Number,
-        enum: [1,2,3,4]
+    floor: {
+        type: Number,
+        enum: [1, 2, 3, 4]
     },
-    maxCount:{
-        type:Number,
+    maxCount: {
+        type: Number,
         default: 2,
-        enum: [1,2]
+        enum: [1, 2]
     },
-    isAlloted:{
-        type:Boolean,
-        default:false
+    isAlloted: {
+        type: Boolean,
+        default: false
     },
-    allottedTo:[{
+    allottedTo: [{
         type: mongoose.Schema.ObjectId,
         ref: "Student",
     }],
-    isSingle:{
-        type:Boolean,
+    isSingle: {
+        type: Boolean,
         default: false,
     },
-    isFull:{
-        type:Boolean,
+    isFull: {
+        type: Boolean,
         default: false,
     },
-    
-},{
-    timestamps:true
+    gender: {
+        type: String,
+        enum: ['MALE', 'FEMALE'],
+        required: true,
+    }
+
+}, {
+    timestamps: true
 });
 
 const room = mongoose.model("rooms", roomSchema);
