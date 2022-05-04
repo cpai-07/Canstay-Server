@@ -11,6 +11,20 @@ const studentSchema=mongoose.Schema({
         trim:true,
         required:true
     },
+    email:{
+        type:String,
+        trim:true,
+        required:true
+    },
+    password:{
+        type:String,
+        trim:true,
+        required:true
+    },
+    isadmin:{
+        type:Boolean,
+        default:false
+    },
     roomNumber:{
         type:Number,
         required:true
@@ -37,5 +51,16 @@ const studentSchema=mongoose.Schema({
         type: String,
         enum: ['MALE', 'FEMALE'],
         required: true,
+      },
+      userType:{
+          type:String,
+          enum:["STUD"],
+          default:"STUD"
       }
-})
+},{
+    timestamps:true,
+});
+
+const studentModel=mongoose.model("student",studentSchema);
+
+module.exports=studentModel;

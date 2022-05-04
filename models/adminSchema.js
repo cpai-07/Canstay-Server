@@ -1,6 +1,6 @@
 const mongoose=require("mongoose");
 
-const userSchema=mongoose.Schema({
+const adminSchema=mongoose.Schema({
     name:{
         type:String,
         trim:true,
@@ -16,14 +16,19 @@ const userSchema=mongoose.Schema({
         trim:true,
         required:true
     },
-    isadmin:{
-        type:Boolean,
-        default:false
+    phoneNumber:{
+        type:Number,
+        required:true
+    },
+    userType:{
+        type:String,
+        enum:["ADMIN"],
+        default:"ADMIN"
     }
 },{
     timestamps:true,
 })
 
-const userModel=mongoose.model("users",userSchema);
+const adminModel=mongoose.model("admin",adminSchema);
 
-module.exports=userModel;
+module.exports=adminModel;
